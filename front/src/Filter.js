@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-const GElist = ["CR", "FL", "QR", "LF", "PX", "PL", "HS", "SS", "VP", "LA", "PH", "BN", "CI", "EE", "GI", "NA", "QI", "US", "WB"];
+const GElist = ["CR", "FL", "QR", "LF", "PX", "PL", "HS", "SS", "VP", "LA", "PH", "BN", "CI", "EE", "GL", "NA", "QI", "US", "WB"];
 
 const Filter = (props) => {
     // const [user, setUser] = useState('');
