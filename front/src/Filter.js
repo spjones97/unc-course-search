@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+const GElist = ["CR", "FL", "QR", "LF", "PX", "PL", "HS", "SS", "VP", "LA", "PH", "BN", "CI", "EE", "GI", "NA", "QI", "US", "WB"];
 
 const Filter = (props) => {
     // const [user, setUser] = useState('');
+    const [geneds, setGeneds] = React.useState([]);
     const [filter, setFilter] = React.useState({
         sort: 0, // sort result by type 0-5
         search: 0, // 0: name; 1: name and description
@@ -27,7 +29,7 @@ const Filter = (props) => {
             cr_max: filter.cr_max,
             dept_y: strtolist(filter.dept_y),
             dept_n: strtolist(filter.dept_n),
-            ge: strtolist(filter.ge),
+            ge: geneds,
         }
         console.log(f);
         props.apply(f);
@@ -66,8 +68,29 @@ const Filter = (props) => {
         setFilter(prevState => ({ ...prevState, ge: e.target.value }));
     }
 
+    const addge = ()=>{
+        let val = document.getElementById("ge").value;
+        if(!GElist.includes(val)||geneds.includes(val)){
+            return;
+        }
+        setGeneds([...geneds, val]);
+        document.getElementById("ge").value="";
+    }
+
+    const delge =(e)=>{
+        setGeneds((geneds) => geneds.filter((d) => d !== e));
+    }
+
+    const Chip = (name) => {
+        return (
+            <button className="btn btn-secondary btn-sm" key={name} value={name} onClick={()=>delge(name)}>
+                {name}&nbsp;<i class="fas fa-times"></i>
+            </button>
+        )
+    }
+
     const strtolist = (str) => {
-        if(str.trim()==""){return []};
+        if (str.trim() == "") { return [] };
         str = str.split(",");
         let res = [];
         str.forEach(element => {
@@ -77,7 +100,7 @@ const Filter = (props) => {
     }
 
     return (
-        
+
         <div>
             <button className="btn btn-dark" style={{ display: 'block', width: '100%' }} onClick={applyfilter}>Apply Filters</button><br />
             <select defaultValue="0" className="custom-select custom-select-sm" onChange={sort}>
@@ -90,11 +113,11 @@ const Filter = (props) => {
             <div>
                 <h5>Search by</h5>
                 <div className="custom-control custom-radio">
-                    <input type="radio" id="s1" name="customRadio" className="custom-control-input" value="0" defaultChecked onChange={search}/>
+                    <input type="radio" id="s1" name="customRadio" className="custom-control-input" value="0" defaultChecked onChange={search} />
                     <label className="custom-control-label" for="s1">Course name only</label>
                 </div>
                 <div className="custom-control custom-radio">
-                    <input type="radio" id="s2" name="customRadio" className="custom-control-input" value="1" onChange={search}/>
+                    <input type="radio" id="s2" name="customRadio" className="custom-control-input" value="1" onChange={search} />
                     <label className="custom-control-label" for="s2">Name and description</label>
                 </div>
             </div>
@@ -104,7 +127,7 @@ const Filter = (props) => {
                     Only include:
                     <input type="text" className="form-control form-control-sm" id="dept_include" onChange={deptinclude}
                     placeholder="Example: COMP, MATH, PHYS" />
-                    <small>Search might take a long time if this is field is empty. Will go through all courses.</small><br/>
+                <small>Search might take a long time if this is field is empty. Will go through all courses.</small><br />
                     Do not include:
                     <input type="text" className="form-control form-control-sm" id="dept_exclude" onChange={deptexclude}
                     placeholder="Example: ENGL, HIST" />
@@ -113,11 +136,26 @@ const Filter = (props) => {
             </div>
             <hr />
 
-            <div>
+            {/* <div>
                 <h5>Gen Ed</h5>
                 <input type="text" className="form-control form-control-sm" id="gened" onChange={gened}
                     placeholder="Example: HS, NA, US" />
                 <small>Type a comma separated list. If empty, defaulted to all Gen Eds.</small>
+
+            </div> */}
+            <div>
+                <h5>Gen Ed</h5>
+                {geneds.map((item) => <span>{Chip(item)}&nbsp;</span>)}
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="GE" list="GEL" id="ge"/>
+                    <datalist id="GEL">
+                        {GElist.map((item) => <option key={item} value={item} />)}
+                    </datalist>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" onClick={addge}>ADD</button>
+                    </div>
+                </div>
+                <small>If empty, defaulted to all Gen Eds.</small>
             </div>
             <hr />
             <div>
