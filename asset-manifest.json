@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/unc-course-search/static/css/main.84d3f47c.chunk.css",
+    "main.js": "/unc-course-search/static/js/main.4dbc3d0a.chunk.js",
+    "main.js.map": "/unc-course-search/static/js/main.4dbc3d0a.chunk.js.map",
+    "runtime-main.js": "/unc-course-search/static/js/runtime-main.71b9adc5.js",
+    "runtime-main.js.map": "/unc-course-search/static/js/runtime-main.71b9adc5.js.map",
+    "static/js/2.3ef4fc22.chunk.js": "/unc-course-search/static/js/2.3ef4fc22.chunk.js",
+    "static/js/2.3ef4fc22.chunk.js.map": "/unc-course-search/static/js/2.3ef4fc22.chunk.js.map",
+    "static/js/3.42f77eb2.chunk.js": "/unc-course-search/static/js/3.42f77eb2.chunk.js",
+    "static/js/3.42f77eb2.chunk.js.map": "/unc-course-search/static/js/3.42f77eb2.chunk.js.map",
+    "index.html": "/unc-course-search/index.html",
+    "static/css/main.84d3f47c.chunk.css.map": "/unc-course-search/static/css/main.84d3f47c.chunk.css.map",
+    "static/js/2.3ef4fc22.chunk.js.LICENSE.txt": "/unc-course-search/static/js/2.3ef4fc22.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.71b9adc5.js",
+    "static/js/2.3ef4fc22.chunk.js",
+    "static/css/main.84d3f47c.chunk.css",
+    "static/js/main.4dbc3d0a.chunk.js"
+  ]
+}
